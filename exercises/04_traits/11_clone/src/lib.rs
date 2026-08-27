@@ -2,9 +2,12 @@
 //  to get the code to compile.
 
 pub fn summary(ticket: Ticket) -> (Ticket, Summary) {
-    (ticket, ticket.summary())
+
+    (ticket.clone(), ticket.summary())
 }
 
+// or you can use build in Clon trait with adding
+// #[derive(Clone)]
 pub struct Ticket {
     pub title: String,
     pub description: String,
@@ -16,6 +19,14 @@ impl Ticket {
         Summary {
             title: self.title,
             status: self.status,
+        }
+    }
+
+    pub fn clone(&self) -> Ticket {
+        Ticket {
+            title: self.title.clone(),
+            description: self.description.clone(),
+            status: self.status.clone(),
         }
     }
 }

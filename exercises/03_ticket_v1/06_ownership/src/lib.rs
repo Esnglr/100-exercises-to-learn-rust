@@ -34,16 +34,18 @@ impl Ticket {
         }
     }
 
-    pub fn title(self) -> String {
-        self.title
+    // in here we put self so when the title function is called the original ticket struct is dropped
+    // and the ownership of ticket transferred to title function itself
+    pub fn title(&self) -> &String {
+        &self.title
     }
 
-    pub fn description(self) -> String {
-        self.description
+    pub fn description(&self) -> &String {
+        &self.description
     }
 
-    pub fn status(self) -> String {
-        self.status
+    pub fn status(&self) -> &String {
+        &self.status
     }
 }
 
